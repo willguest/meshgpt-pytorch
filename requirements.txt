@@ -1,0 +1,14 @@
+torchtyping
+pytorch_custom_utils
+beartype
+einops
+einx
+x_transformers
+local_attention
+vector_quantize_pytorch
+taylor_series_linear_attention
+classifier_free_guidance_pytorch
+torch_geometric
+gateloop_transformer
+tqdm
+ema_pytorch
