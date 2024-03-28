@@ -1,4 +1,5 @@
 import torch
+import meshWriter
 
 from meshgpt_pytorch import (
     MeshAutoencoder,
@@ -41,16 +42,17 @@ transformer = MeshTransformer(
 loss = transformer(
     vertices = vertices,
     faces = faces,
-    texts = ['a square table', 'a round watermelon'],
+    texts = ['a high chair', 'a small teapot'],
 )
 
 loss.backward()
 
 # after much training of transformer, you can now sample novel 3d assets conditioned on text
 
-faces_coordinates, face_mask = transformer.generate(texts = ['a round table'])
-
+faces_coordinates, face_mask = transformer.generate(texts = ['a long table'])
 
 # (batch, num faces, vertices (3), coordinates (3)), (batch, num faces)
 # now post process for the generated 3d asset
-print("faces_coord", faces_coordinates)
+
+print("faces_coord shape", faces_coordinates .shape)
+meshWriter.tensor_to_obj(faces_coordinates, 'output.obj')
